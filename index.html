@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:," />
+    <title>VRM Avatar Tracker — Wajah & Tangan</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #2a2d33; }
+      body { font-family: system-ui, "Segoe UI", sans-serif; }
+      #app { position: fixed; inset: 0; }
+      #app canvas { display: block; }
+
+      /* video tersembunyi: hanya jadi sumber MediaPipe */
+      #video {
+        position: fixed;
+        width: 2px; height: 2px;
+        opacity: 0;
+        pointer-events: none;
+        left: -10px; top: -10px;
+      }
+
+      /* preview webcam kecil di kiri atas */
+      #preview-wrap {
+        position: fixed;
+        left: 12px; top: 12px;
+        width: 260px; height: 195px;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #d1d5db;
+        box-shadow: 0 4px 14px rgba(0,0,0,.15);
+        background: #111;
+        z-index: 5;
+      }
+      #preview { width: 100%; height: 100%; display: block; }
+
+      #hint {
+        position: fixed;
+        left: 50%; bottom: 16px;
+        transform: translateX(-50%);
+        padding: 8px 14px;
+        background: rgba(17,24,39,.82);
+        color: #fff;
+        border-radius: 999px;
+        font-size: 13px;
+        z-index: 6;
+      }
+      #loader {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #2a2d33;
+        color: #d1d5db;
+        font-size: 16px;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <video id="video" playsinline muted></video>
+
+    <div id="preview-wrap">
+      <canvas id="preview" width="260" height="195"></canvas>
+    </div>
+
+    <div id="hint">Memuat…</div>
+    <div id="loader">Memuat model avatar…</div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

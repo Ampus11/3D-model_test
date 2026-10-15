@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# vite
+*.local
+
+# media pipe wasm (already in public/libs but generated)
+*.wasm
